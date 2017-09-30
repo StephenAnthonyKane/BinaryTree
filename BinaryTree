@@ -1,0 +1,79 @@
+import java.util.*;
+
+
+public class BinaryTree {
+	
+	public Node root;
+	
+	BinaryTree(int dat){
+		root=new Node(dat);
+	}
+	
+	public static void main(String args[]){
+		Scanner scan=new Scanner(System.in);
+		int dat;
+		System.out.println("Test");
+		
+		BinaryTree oak=new BinaryTree(10);
+		
+		for(int i=0;i<5;i++){
+			dat=scan.nextInt();
+			oak.insertNode(dat, oak.root);
+		}
+		
+		printTree(oak.root);
+		
+	}
+	
+
+	
+	public void insertNode(int dat,Node Parent){
+		if(Parent.data>=dat){
+			if(Parent.leftNode==null){
+				Parent.leftNode=new Node(dat);
+			}else{
+				insertNode(dat,Parent.leftNode);
+			}
+		}else if(Parent.data<dat){
+			if(Parent.rightNode==null){
+				Parent.rightNode=new Node(dat);
+			}else{
+				insertNode(dat,Parent.rightNode);
+			}
+		}
+	}
+	
+	public static void printTree(Node node){
+		
+		if(node==null)return;
+		
+		printTree(node.leftNode);
+		System.out.println(node.data);
+		printTree(node.rightNode);
+		
+		
+			
+		
+	}
+	
+		
+	class Tree{
+		public Node root;
+		
+		Tree(int dat){
+			root=new Node(dat);
+		}
+	}
+	
+	class Node{
+		public int data;
+		public Node leftNode;
+		public Node rightNode;
+		
+		Node(int dat){
+			data=dat;
+			leftNode=null;
+			rightNode=null;
+		}
+	}
+}
